@@ -15,7 +15,7 @@ app.use(cors(
   }
 ));
 app.use(express.json());
-
+require("dotenv").config();
 
 mongoose.connect(MONGOURL, {
   useNewUrlParser: true,
