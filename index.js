@@ -11,18 +11,14 @@ const MONGOURL = process.env.MONGOURL; // Use correct variable name
 
 app.use(cors(
   {
-    origin: "+", // Allow all origins for development, change to specific origin in production
+    origin: "*", // Allow all origins for development, change to specific origin in production
   }
 ));
 app.use(express.json());
-require("dotenv").config();
 
-mongoose.connect(MONGOURL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log("MongoDB connected"))
-.catch((err) => console.error("MongoDB connection error:", err));
+mongoose.connect(MONGOURL)
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.error("MongoDB connection error:", err));
 
 const userSchema = new mongoose.Schema({
   username: String,
